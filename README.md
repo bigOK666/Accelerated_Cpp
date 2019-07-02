@@ -57,4 +57,33 @@ C++ 中可以使用两种库(library)，一种是标准库(standard library)，�
 * main函数可以不声明返回值，即无`return`，则默认返回0。
 * 函数体必须用花括号抱起来。
 
-## Chapter 1
+## Chapter 1 字符串
+
+这一章会涉及变量的声明，初始化以及输入和字符串库的应用。
+
+### 1.1 输入
+
+下面的程序会从窗口读取输入的名字并在窗口打出问候语:
+
+```
+// ask for a person's name, and greet the person
+#include <iostream>
+#include <string>
+int main()
+{
+ // ask for the person's name
+ std::cout << "Please enter your first name: ";
+ // read the name
+ std::string name; // define name
+ std::cin >> name; // read into
+ // write a greeting
+ std::cout << "Hello, " << name << "!" << std::endl;
+ return 0;
+}
+
+```
+为了读取输入，计算机得有个地方储存这个输入，这个储存的地放叫做**变量**。 变量是有名字的**对象**，要知道，**对象**与**变量**是不同的，有的对象是没有名字的。
+
+定义变量的时候需要同时指明这个变量的类型。 在栗子中，`std::string name;`,局部变量`name`的类型为`std::string`，这个类型在标准库中已经被定义好了，我们只要将这个标准库导入就行，即`#include <string>`。 由于`name`是在函数内部声明的，所以它是局部变量，在程序运行到函数结尾的时候，这个变量会被摧毁。
+
+在定义变量的同时也可以对变量进行初始化，就是说在定义的时候就给这个变量一个初始值。 如果这个变量是个字符串`String`，在不初始化的情况下这个字符串变量会是个空字符串`empty/null string`，不包含任何字符。
