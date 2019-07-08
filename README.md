@@ -95,4 +95,44 @@ int main()
 * 输入输出库被要求从输入设备读取内容，这种情况下它会先将缓存的内容刷出去，然后再读取
 * 我们要求它刷出去
 
+### 1.2 给名字相框
+
+这一节主要是谈另一种创建变量的方式，字符串的拼接以及常量的定义。 先上程序：
+```
+// ask for a person's name, and generate a framed greeting
+#include <iostream>
+#include <string>
+int main()
+{
+ std::cout << "Please enter your first name: ";
+ std::string name;
+ std::cin >> name;
+ // build the message that we intend to write
+ const std::string greeting = "Hello, " + name + "!";
+ 
+ // build the second and fourth lines of the output
+ const std::string spaces(greeting.size(), ' ');
+ const std::string second = "* " + spaces + " *";
+ 
+ // build the first and fifth lines of the output
+ const std::string first(second.size(), '*');
+ 
+ // write it all
+ std::cout << std::endl;
+ std::cout << first << std::endl;
+ std::cout << second << std::endl;
+ std::cout << "* " << greeting << " *" << std::endl;
+ std::cout << second << std::endl;
+ std::cout << first << std::endl;
+ 
+ return 0;
+}
+```
+
+首先在声明变量`greeting`的时候我们可以发现，在声明变量的同时可以初始化这个变量的值。 然后`+`这个运算器在应用于字符串类型的时候可以用来串接字符串，但`+`不能串接两个字符。 也就是说只要算子里面有字符串就可以串接。 字符char和字符串string的区别就是字符串是由很多个字符组成的，在声明字符的时候用单引号`''`, 在声明字符串的时候用双引号`""`。 如果运算器对于算子有不同的意义，我们称之为运算器**过载**。
+
+还有一点要注意的是我们可以先声明一个常量而不需要知道这个常量里面是什么值，greeting在被声明初始化的时候并不能确定里面应该有什么值，因为`name`这个变量还不确定，直到运行程序并从外部获得`name`这个变量的值后，greeting的值才明确下来。 那么常量的意义是什么呢？ 常量的意义就在于定下这个常量之后就不能再更改它了，提供了极高的安全性。
+
+
+
 
