@@ -167,4 +167,33 @@ int main()
 ```
 ### 2.3 确定外框的行数
 
+这一节来完成外边框的基础部分。
+```
+// the number of blanks surrounding the greeting 文字到边框的间距，最少为0行
+const int pad = 1;
+// total number of rows to write 有了边距就可以确定一共要打多少行了
+const int rows = pad * 2 + 3;
+```
+```
+// separate the output from the input
+std::cout << std::endl;
+// write rows rows of output
+int r = 0;
+// invariant: we have written r rows so far
+while (r != rows) {
+	// write a row of output (as we will describe in §2.4/22)
+ std::cout << std::endl;
+ ++r;
+}
+```
+循环体的内部我们下一节来完成
 
+
+### 2.4 while循环语句
+
+循环语句的基本逻辑为
+```
+while (condition) 
+ 
+statement
+```
