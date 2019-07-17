@@ -143,3 +143,28 @@ int main()
 ### 2.1 问题阐述
 
 同样是上一章的任务，现在要通过循环语句来完成重复性的部分，即外边框的输出，同时也通过使用循环语句使程序变得更加灵活，添加边框的行数仅需改变表示边框数量变量的值就能实现。
+
+### 2.2 整体结构
+
+整体结构如下，从用户获取的部分还是要保留的，我们要重构的是边框的部分。
+
+```
+#include <iostream>
+#include <string>
+int main()
+{
+ // ask for the person's name
+ std::cout << "Please enter your first name: ";
+ // read the name
+ std::string name;
+ std::cin >> name;
+ // build the message that we intend to write
+ const std::string greeting = "Hello, " + name + "!";
+ // we have to rewrite this part...
+ 
+ return 0;
+}
+```
+### 2.3 确定外框的行数
+
+
