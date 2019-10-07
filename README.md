@@ -203,3 +203,8 @@ statement
 设计循环语句前，为了保证每次运行循环的语句都能达到预想的目的，需要设置**loop invariant**，也就是循环常量。 对于设计while循环来说，需要注意两点：当while循环结束时，条件(condition)此时需为FALSE；每当while循环将要检验条件时，loop invariant都是TRUE。 在2.3节的while循环语句开头，我们就设计了loop invariant为“已经输出了r行”。 设计loop invariant的要点是要包含循环体内的某个变量，例如“r"。
 
 ### 2.4
+程序的目的是将欢迎的文字用星号框起来，通过观察我们可以发现每行的列数是固定的，因此我们可以定义列数为
+```
+const std::string::size_type cols = greeting.size() + pad *2 +2;
+```
+size_type是std::string域下的类型名称，用来定义字符串中的字符数量，所有字符串中的字符数量都用这个数据类型。
