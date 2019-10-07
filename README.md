@@ -200,4 +200,6 @@ statement
 上一节用到的while语句所表达的意思就是如果r不等于rows, 就一直重复执行输出空行并让r增1。
 
 #### 2.3.2 如何设计循环语句
-设计循环语句前，为了保证每次运行循环的语句都能达到预想的目的，需要设置**loop invariant**，也就是循环常量。
+设计循环语句前，为了保证每次运行循环的语句都能达到预想的目的，需要设置**loop invariant**，也就是循环常量。 对于设计while循环来说，需要注意两点：当while循环结束时，条件(condition)此时需为FALSE；每当while循环将要检验条件时，loop invariant都是TRUE。 在2.3节的while循环语句开头，我们就设计了loop invariant为“已经输出了r行”。 设计loop invariant的要点是要包含循环体内的某个变量，例如“r"。
+
+### 2.4
