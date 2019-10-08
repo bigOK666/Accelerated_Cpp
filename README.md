@@ -202,9 +202,36 @@ statement
 #### 2.3.2 如何设计循环语句
 设计循环语句前，为了保证每次运行循环的语句都能达到预想的目的，需要设置**loop invariant**，也就是循环常量。 对于设计while循环来说，需要注意两点：当while循环结束时，条件(condition)此时需为FALSE；每当while循环将要检验条件时，loop invariant都是TRUE。 在2.3节的while循环语句开头，我们就设计了loop invariant为“已经输出了r行”。 设计loop invariant的要点是要包含循环体内的某个变量，例如“r"。
 
-### 2.4
+### 2.4 把行打出来
 程序的目的是将欢迎的文字用星号框起来，通过观察我们可以发现每行的列数是固定的，因此我们可以定义列数为
 ```
 const std::string::size_type cols = greeting.size() + pad *2 +2;
 ```
-size_type是std::string域下的类型名称，用来定义字符串中的字符数量，所有字符串中的字符数量都用这个数据类型。
+size_type是std::string域下的类型名称，用来定义字符串中的字符数量，所有字符串中的字符数量都用这个数据类型。这个数据类型是无符号数据类型，简单来讲可以承载很大的数。
+
+现在我们可以用循环来输出字符了：
+
+```
+std::string::size_type c = 0;
+//invariant: we have written c characters so far in the current row
+while(c != 0) {
+	//write one or more characters
+	//adjust the value of c to maintain the invariant
+}
+```
+是的，上面的代码只写了要干啥，主要内容还没写，我们往下看。
+#### 2.4.1 把框打出来
+需要打星星的地方是固定的，仔细想一下只有四种情况需要打星星：第一行，最后一行，每行的开头（第一列），最后一列。 那么我们需要的打框的部分就出来了：
+```
+//invariant: we have written c characters so far in the current row
+while(c!=cols){
+	if(r==0 || r==rows - 1 || c==0 || c==cols - 1){
+		std::cout << "*";
+	} else{
+		//write one or more characters
+		//adjust the value of c to maintain the invariant
+	}
+}
+```
+
+
