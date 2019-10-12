@@ -366,3 +366,4 @@ int main()
 }
 
 ```
+这里需要先介绍两个新的库<iomanip> 和<ios>，我们这个程序用到的是<ios>中的streamsize, 用来定义数据流的大小，<iomanip>用到的是setprecision，用来定义输出数值的精确度。
