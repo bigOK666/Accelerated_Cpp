@@ -367,3 +367,9 @@ int main()
 
 ```
 这里需要先介绍两个新的库<iomanip> 和<ios>，我们这个程序用到的是<ios>中的streamsize, 用来定义数据流的大小，<iomanip>用到的是setprecision，用来定义输出数值的精确度。
+
+程序里有几个要点需要注意一下：
+* cout 输入的字符串可以通过空格从视觉上分成多行，但实际会作为一个字符串输出。
+* 小数一般用double，双精度在现在来说已经没那么耗资源了。
+* 除了从外部输入的值以外，一般都要给个合适的初始值，否则系统将会自动分配默认值为初始值，不好控。
+* 在cout的输入中我们先设了输出精确度为3，setprecision(3)，在结尾处又将精确度重置为cout的默认值setprecision(pred)，当然也可以用cout.precision(prec)来重置它，而直接用setprecision更简洁一些。
