@@ -416,4 +416,9 @@ typedef起到了简化的作用，通过typedef， vec_sz实际上就是vector<d
 
 知道向量的个数之后，我们就可以将向量以非降序排序，之所以是非降序是因为有时会出现几个相同的值。 排序算法在<algorithm>里就有现成的，`sort(homework.begin(), homework.end());`
 
-
+通过判断元素个数为奇偶数就可以找到相应的中位数了：
+```
+vec_sz mid = size / 2;
+double median;
+median = size % 2 == 0 ? (homework[mid] + homework[mid-1]) / 2 : homework[mid];
+```
