@@ -394,3 +394,21 @@ int main()
 
 #### 3.2.1 将数据存到向量中
 
+向量vector可以将一系列同一类型的数据存到一起：vector<datatype> variable_name。
+
+```
+double x;
+vector<double> homework;
+
+while(cin>>x){
+	homework.push_back(x);
+}
+```
+`push_back()`是vector类中的一种方法，可以将元素添加到向量的末尾。
+
+#### 3.2.2 生成输出
+为了找到中位数，我们需要知道向量中元素的个数：
+```
+typedef vector<double>::size_type vec_sz;
+vec_sz size = homework.size(); 
+```
