@@ -412,3 +412,8 @@ while(cin>>x){
 typedef vector<double>::size_type vec_sz;
 vec_sz size = homework.size(); 
 ```
+typedef起到了简化的作用，通过typedef， vec_sz实际上就是vector<double>::size_type。
+
+知道向量的个数之后，我们就可以将向量以非降序排序，之所以是非降序是因为有时会出现几个相同的值。 排序算法在<algorithm>里就有现成的，`sort(homework.begin(), homework.end());`
+
+
