@@ -422,3 +422,7 @@ vec_sz mid = size / 2;
 double median;
 median = size % 2 == 0 ? (homework[mid] + homework[mid-1]) / 2 : homework[mid];
 ```
+
+#### 3.2.3 注意事项
++ 在vector为空的情况下要中断程序返回1
++ vector<double>::size_type是无符号整型，当无符号整型与一般的整型在同一表达式中时，*计算的结果也将是无符号整型 *
