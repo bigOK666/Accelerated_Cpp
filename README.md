@@ -425,8 +425,41 @@ median = size % 2 == 0 ? (homework[mid] + homework[mid-1]) / 2 : homework[mid];
 
 #### 3.2.3 注意事项
 + 在vector为空的情况下要中断程序返回1
-+ vector<double>::size_type是无符号整型，当无符号整型与一般的整型在同一表达式中时，*计算的结果也将是无符号整型 *
++ vector<double>::size_type是无符号整型，当无符号整型与一般的整型在同一表达式中时，*计算的结果也将是无符号整型*
 
 
 ## Chapter 4 函数与数据
-这一章主要是将功能性的代码整合为函数，以便重复使用。
+这一章主要是将功能性的代码整合为函数以及可编译的单独文件，以便重复使用。
+
+### 4.1 将计算整合起来
+当我们要多次用到同一种计算行为的时候，我们就该考虑将这个计算行为转变成函数来调用了。就像在上一章计算总成绩：
+```
+// compute a student's overall grade from midterm and final exam grades and homework grade
+double grade(double midterm, double final, double homework)
+{
+ return 0.2 * midterm + 0.4 * final + 0.4 * homework;
+}
+```
+括号中是函数的输入变量，也叫形参，大括号里的是函数主体，返回的可以是个值也可以是其他函数。
+
+#### 4.1.1 找中位数
+从向量中找中位数的方法也可以多次使用：
+```
+// compute the median of a vector<double>
+// note that calling this function copies the entire argument vector
+double median(vector<double> vec)
+{
+ typedef vector<double>::size_type vec_sz;
+ vec_sz size = vec.size();
+ if (size == 0)
+ throw domain_error("median of an empty vector");
+ sort(vec.begin(), vec.end());
+ 
+ vec_sz mid = size / 2;
+ return size % 2 == 0 ? (vec[mid] + vec[mid-1]) / 2 : vec[mid];
+}
+
+```
+值得注意的是当向量为空时，我们需要向程序使用者发出警告/提醒“exception"，这里我们用到的是`throw domain_error("what?")`。 domain_error是exception object的一种，被定义在<stdexcept>中,用来表明程序的输入超出了程序所能处理的范围。
+
+形参作为输入会被拷贝到程序定义的局部变量中，例如输入的向量被拷贝到vec中。 这样的好处是当vec被排序时，原向量不会发生改变。
