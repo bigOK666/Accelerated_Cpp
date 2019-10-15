@@ -463,3 +463,39 @@ double median(vector<double> vec)
 值得注意的是当向量为空时，我们需要向程序使用者发出警告/提醒“exception"，这里我们用到的是`throw domain_error("what?")`。 domain_error是exception object的一种，被定义在<stdexcept>中,用来表明程序的输入超出了程序所能处理的范围。
 
 形参作为输入会被拷贝到程序定义的局部变量中，例如输入的向量被拷贝到vec中。 这样的好处是当vec被排序时，原向量不会发生改变。
+
+#### 4.1.2 重新编写计算分数
+```
+// compute a student's overall grade from midterm and final exam grades
+// and vector of homework grades.
+// this function does not copy its argument, because median does so for us.
+double grade(double midterm, double final, const vector<double>& hw)
+{
+ if (hw.size() == 0)
+ throw domain_error("student has done no homework");
+ return grade(midterm, final, median(hw));
+}
+
+```
+这个函数的知识点很重要，第三个形参为`const vector<double>& hw`意为reference to vector of const double，双精度常量向量的参照,也就是说给const vector<double>起了一个别名叫hw。
+```
+vector<double> homework;
+vector<double>& hw = homework; // hw is a synonym for homework
+```
+homework和hw是同一个东西，改动其中任一变量都会使另一变量发生改变。
+```
+// chw is a read-only synonym for homework
+const vector<double>& chw = homework;
+
+```
+加了const前缀后，可以保证我们不会对chw做任何变动。
+
+由于参照是原变量的另一个名字，因此不会有参照的参照，这样并没有意义，所有的参照都会指向原变量。 
+
+非常量的参照不能指向常量或者常量参照：
+```
+vector<double>& hw2 = chw;//非法
+```
+因为常量不能被更改。
+
+由于形参是const参照，所以可以指向const和非const的向量，而且由于形参是参照，我们就省去了拷贝的资源。
