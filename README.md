@@ -514,4 +514,4 @@ istream& read_hw(istream& in, vector<double>& hw) {
  return in;
 }
 ```
-程序返回值为istream类型的in
+程序返回值为istream类型的in的参考，输入也是两个参考变量，这样表明这个程序将会更改输入的变量，有意思的是输入为in的参考变量，返回为同一个in，因此程序的返回类型应该为istream的参考变量。
