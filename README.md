@@ -507,3 +507,11 @@ vector<double>& hw2 = chw;//非法
 在读取用户输入的家庭作业成绩时，我们需要得到两个返回值，一个是输入的成绩向量，另一个是输入完成的状态，而C++的函数只能返回一个值，这一节我们介绍一个间接的方法来获得两个值。
 
 主要诀窍就是使用参考变量：
+```
+istream& read_hw(istream& in, vector<double>& hw) {
+ // we must fill in this part
+ 
+ return in;
+}
+```
+程序返回值为istream类型的in
