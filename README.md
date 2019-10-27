@@ -522,3 +522,5 @@ istream& read_hw(istream& in, vector<double>& hw) {
 ```
 if (read_hw(cin, homework)){/*...*/}
 ```
+
+我希望这一切都是有意义的。
