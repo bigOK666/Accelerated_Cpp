@@ -522,5 +522,16 @@ istream& read_hw(istream& in, vector<double>& hw) {
 ```
 if (read_hw(cin, homework)){/*...*/}
 ```
+其他的部分不是很重要，向vector添加元素用hw.push_back(x), 清除用hw.clear。清除输入用in.clear()。
 
-我希望这一切都是有意义的。
+#### 4.1.4 3种函数形参
+
+在median函数中输入为vector<double>，函数会复制这个输入然后对复制的变量进行操作，因为sort函数会改变变量的值。
+
+在grade函数中输入为const vector<double>&，这使得输入参数不会被拷贝而是直接被用到函数中，const保证了直接用的参数不会被改变。
+
+在read_hw函数中输入为vector<double>&，输入的参数将会被函数改变，这也是函数本身想要达到的目的。
+
+lvalue其实就是左值，在内存中有地址的值，因此不是暂时的对象。
+
+形参对应于non-const参照参数必须是lvalue，形参由值传递或者为const参照参数可以为任何值。
