@@ -600,3 +600,5 @@ struct Student_info {
 
 关键字struct定义了Student_info是有四个成员的数据类型，既然它是一种数据类型，那么我们就可以直接用Student_info来定义变量，也可以定义一个包含Student_info的向量 vector<Student_info>。 齐活！
 
+
+#### 4.2.2 管理所有学生的数据
