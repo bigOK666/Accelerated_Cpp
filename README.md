@@ -604,3 +604,19 @@ struct Student_info {
 #### 4.2.2 管理所有学生的数据
 
 目前处理学生的数据大体可以分为三步： 读取数据，根据读取的数据计算相关数据以及将学生信息按照某一变量排序。
+
+前两步相对比较简单，根据前面章节就能够完成：
+```
+istream& read(istream& is, Student_info& s)
+{
+ // read and store the student's name and midterm and final exam grades
+ is >> s.name >> s.midterm >> s.final;
+ read_hw(is, s.homework); // read and store all the student's homework grades 
+ return is;
+}//读取并储存数据到结构体内
+
+double grade(const Student_info& s)
+{
+ return grade(s.midterm, s.final, s.homework);
+}//计算分数
+```
