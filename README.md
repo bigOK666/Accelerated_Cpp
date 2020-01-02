@@ -620,3 +620,13 @@ double grade(const Student_info& s)
  return grade(s.midterm, s.final, s.homework);
 }//计算分数
 ```
+
+比较有挑战性的是排序，之前我们使用sort对向量进行排序有个前提，即向量中的元素都能通过`<`进行比较。而当向量中的元素为结构体时，简单的使用sort(students.begin(),students.end())就会报错了。 幸运的是sort提供了更改排序比较方法的选项，称为*predicate*。predicate是返回布尔值的函数。因此我们就可以构造一个函数来比较结构体内的某一元素而不是整个结构体了。
+
+```
+bool compare(const Student_info& x, const Student_info& y)
+{
+ return x.name < y.name;
+}
+```
+调用sort时将predicate作为参数传入`sort(students.begin(),students.end(),compare);`
