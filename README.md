@@ -674,5 +674,32 @@ int main()
 
 ### 4.3
 
-目前我们定义了很多个函数，如果把这些函数全放在一个文件里进行编译并运行是完全没问题的，但是如果在这单一文件里找某一特定的函数就得需要鼠标滚来滚去才能找到，很麻烦。 C++支持多文件编译，因此我们可以将函数分类并将同一类/功效的函数放到同一文件中。
+目前我们定义了很多个函数，如果把这些函数全放在一个文件里进行编译并运行是完全没问题的，但是如果在这单一文件里找某一特定的函数就得需要鼠标滚来滚去才能找到，很麻烦。 C++支持多文件编译，因此我们可以将函数分类并将同一类/功效的函数放到同一文件中，比如median。 将median函数单独列入一个文件需要将median用到的标准库之类的写在开头然后将函数体拷贝到文件中。
+```
+// source file for the median function
+#include <algorithm>> // to get the declaration of sort
+#include <stdexcept> // to get the declaration of domain_error
+#include <vector> // to get the declaration of vector
+using std::domain_error; using std::sort; using std::vector;
+// compute the median of a vector<double>
+// note that calling this function copies the entire argument vector
+double median(vector<double> vec)
+{
+ // function body as defined in §4.1.1/53
+}
+```
+当其他函数需要调用这个函数的时候，只需要在相应文件的开头加入
+```
+// a much better way to use median
+#include "median.h"
+#include <vector>
+int main(){/*...*/}
 
+```
+这个时候，有意思的事情来了，因为我们没有include cpp 文件，而是h文件。 在h文件中我们只需要声明这个函数就行了。
+```
+// median.h
+#include <vector>
+double median(std::vector<double>);
+
+```
